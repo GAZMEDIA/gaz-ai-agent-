@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Reply Assistant</string>
+    <string name="service_name">Reply Assistant</string>
+    <string name="service_description">Reads the chat you have open in WhatsApp, Messenger, Facebook, Instagram, Telegram, Tinder, Badoo and similar apps, and suggests a reply. Nothing is sent unless you tap Send.</string>
+</resources>
