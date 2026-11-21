@@ -173,7 +173,11 @@ class ChatAssistService : AccessibilityService() {
         val app = currentApp; val title = currentTitle; val transcript = currentTranscript
         thread {
             val result = try {
-                Result.success(AiClient.suggestReply(url, key, model, app, title, about, transcript, notThis))
+                Result.success(
+                    AiClient.suggestReply(url, key, model, app, title, about, transcript, notThis) { newModel ->
+                        Prefs.saveModel(this, newModel)
+                    }
+                )
             } catch (e: Exception) {
                 Result.failure(e)
             }
