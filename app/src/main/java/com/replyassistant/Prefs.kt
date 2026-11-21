@@ -8,7 +8,7 @@ object Prefs {
     // Defaults use Groq's free tier (OpenAI-compatible API). Any OpenAI-compatible
     // provider works: just change the URL, model and key in the app.
     const val DEFAULT_URL = "https://api.groq.com/openai/v1/chat/completions"
-    const val DEFAULT_MODEL = "llama-3.1-8b-instant"
+    const val DEFAULT_MODEL = "llama-3.3-70b-versatile"
 
     fun apiKey(c: Context) = sp(c).getString("api_key", "") ?: ""
     fun apiUrl(c: Context) = sp(c).getString("api_url", DEFAULT_URL)?.ifBlank { DEFAULT_URL } ?: DEFAULT_URL
@@ -24,6 +24,10 @@ object Prefs {
             .putString("about_me", aboutMe.trim())
             .putBoolean("paused", paused)
             .apply()
+    }
+
+    fun saveModel(c: Context, model: String) {
+        sp(c).edit().putString("model", model).apply()
     }
 
     private fun sp(c: Context) = c.getSharedPreferences(FILE, Context.MODE_PRIVATE)
